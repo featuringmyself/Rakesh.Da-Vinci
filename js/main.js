@@ -204,3 +204,36 @@
 
 })(jQuery);
 
+window.addEventListener('scroll', function() {
+    var icon = document.querySelector('.whatsapp-icon');
+    if (window.scrollY > 100) {
+      icon.style.display = 'block';
+    } else {
+      icon.style.display = 'none';
+    }
+  });
+
+
+//   custom message from footer
+document.getElementById('consultationForm').addEventListener('submit', function(event) {
+	event.preventDefault(); // Prevent the default form submission
+  
+	// Collect the form data
+	const name = encodeURIComponent(document.getElementById('name').value);
+	const email = encodeURIComponent(document.getElementById('email').value);
+	const subject = encodeURIComponent(document.getElementById('subject').value);
+	const message = encodeURIComponent(document.getElementById('message').value);
+  
+	// Construct the WhatsApp message
+	const whatsappMessage = `Name: ${name}%0AEmail: ${email}%0ASubject: ${subject}%0AMessage: ${message}`;
+  
+	// Replace with your WhatsApp number in international format
+	const phoneNumber = 'YOUR_PHONE_NUMBER';
+	const whatsappUrl = `https://wa.me/${919635407008}?text=${whatsappMessage}`;
+  
+	// Redirect to WhatsApp
+	window.location.href = whatsappUrl;
+  });
+
+
+  
