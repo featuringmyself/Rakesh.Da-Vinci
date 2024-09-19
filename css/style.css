@@ -9767,3 +9767,6 @@ textarea.form-control {
 .m-10{
   margin-top: 10px;
 }
+.overflowy-hide{
+  overflow-y: hidden;
+}
