@@ -9772,3 +9772,12 @@ textarea.form-control {
 .overflowy-hide{
   overflow-y: hidden;
 }
+#developerinfo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#developerinfo h2{
+  font-size: 1.2vw;
+  color: pink;
+}
