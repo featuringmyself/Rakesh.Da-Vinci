@@ -1,42 +1,118 @@
 @import 'bootstrap/bootstrap';
 @import 'bootstrap/variables';
 
-$font-primary: 'Poppins',Arial, sans-serif;
+$font-primary: 'Inter', 'Poppins', Arial, sans-serif;
 
 $white: #fff;
 $black: #000000;
-$darken: #00043c;
+$darken: #1a1a2e;
 
-$primary: #c5cf31;
-$secondary: #8fd0d2;
+$primary: #4a90e2;
+$secondary: #50c878;
 
+// Modern color palette
+$background-light: #f8f9fa;
+$text-primary: #2d3436;
+$accent-color: #6c5ce7;
+$success-color: #00b894;
+$warning-color: #fdcb6e;
 
-
-@mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
+.ftco-section {
+    padding: 7em 0;
+    background: $background-light;
 }
 
-@mixin transition($transition) {
-    -moz-transition:    all $transition ease;
-    -o-transition:      all $transition ease;
-    -webkit-transition: all $transition ease;
-    -ms-transition: 		all $transition ease;
-    transition:         all $transition ease;
+.heading-section {
+    margin-bottom: 4rem;
+    
+    h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        position: relative;
+        
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: $primary;
+        }
+    }
+    
+    p {
+        color: $text-primary;
+        font-size: 1.1rem;
+    }
+}
+
+.course-card {
+    background: $white;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    @include box-shadow(0 5px 15px rgba(0,0,0,0.05));
+    
+    &:hover {
+        transform: translateY(-5px);
+        @include box-shadow(0 15px 30px rgba(0,0,0,0.1));
+    }
+    
+    .course-img {
+        position: relative;
+        overflow: hidden;
+        
+        img {
+            transition: all 0.5s ease;
+        }
+        
+        &:hover img {
+            transform: scale(1.1);
+        }
+    }
+    
+    .course-content {
+        padding: 2rem;
+        
+        h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        p {
+            color: $text-primary;
+            margin-bottom: 1.5rem;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            
+            span {
+                font-size: 0.9rem;
+                color: $accent-color;
+                font-weight: 500;
+            }
+        }
+    }
 }
 
 html {
-	// overflow-x: hidden;
+    scroll-behavior: smooth;
 }
+
 body {
-	font-family: $font-primary;
-	background: $white;
-	font-size: 14px;
-	line-height: 1.8;
-	font-weight: 400;
-	color: lighten($black,50%);
+    font-family: $font-primary;
+    background: $background-light;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+    color: $text-primary;
 	&.menu-show {
 		overflow: hidden;
 		position: fixed;
@@ -45,138 +121,105 @@ body {
 	}
 }
 a {
-	transition: .3s all ease;
-	color: $primary;
-	&:hover, &:focus {
-		text-decoration: none;
-		color: $primary;
-		outline: none !important;
-	}
+    transition: .3s all ease;
+    color: $primary;
+    &:hover, &:focus {
+        text-decoration: none;
+        color: darken($primary, 10%);
+        outline: none !important;
+    }
 }
 h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
-	line-height: 1.5;
-	color: rgba(0,0,0,.8);
-	font-weight: 400;
+    line-height: 1.5;
+    color: $darken;
+    font-weight: 600;
+    letter-spacing: -0.5px;
 }
 
 
-.wrap{
-	background: #202020;
-	.phone{
-		a{
-			color: $white;
-			font-size: 12px;
-		}
-	}
+.wrap {
+    background: $darken;
+    padding: 10px 0;
+    .phone {
+        a {
+            color: $white;
+            font-size: 14px;
+            @include transition(.3s);
+            &:hover {
+                color: $accent-color;
+            }
+        }
+    }
 }
-.social-media{
-	display: inline-block;
-	p{
-		a{
-			width: 34px;
-			height: 34px;
-			background: lighten($black,30%);
-			margin-right: 1px;
-			span{
-				color: $white;
-			}
-			&:hover{
-				background: $primary;
-				border-color: $primary;
-				span{
-					color: $white;
-				}
-			}
-		}
-	}
+.social-media {
+    display: inline-block;
+    p {
+        a {
+            width: 40px;
+            height: 40px;
+            background: $accent-color;
+            margin-right: 4px;
+            @include border-radius(50%);
+            @include transition(.3s);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            &:hover {
+                background: darken($accent-color, 10%);
+                transform: translateY(-2px);
+            }
+            
+            span {
+                color: $white;
+            }
+        }
+    }
 }
 
 .ftco-navbar-light {
-	background: #fff !important;
-	z-index: 3;
-	padding: 0;
-	-webkit-box-shadow: 0px 5px 20px -17px rgba(0,0,0,0.34);
-	-moz-box-shadow: 0px 5px 20px -17px rgba(0,0,0,0.34);
-	box-shadow: 0px 5px 20px -17px rgba(0,0,0,0.34);
-	@include media-breakpoint-down(md) {
-		background: $white;
-		position: relative;
-		top: 0;
-		padding: 10px 15px;
-	}
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    z-index: 3;
+    padding: 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
-	.navbar-brand {
-		color: $black;
-		text-transform: uppercase;
-		font-weight: 700;
-		font-size: 20px;
-		line-height: 1;
-		span{
-			color: lighten($black,80%);
-		}
-		&:hover, &:focus{
-			color: $black;
-		}
-		@include media-breakpoint-down(sm){
-			margin-bottom: 20px;
-		}
-	}
+    .navbar-brand {
+        color: $darken;
+        font-weight: 700;
+        font-size: 24px;
+        letter-spacing: -1px;
+    }
 
-	.navbar-nav {
-		@include media-breakpoint-down(md){
-			padding-bottom: 10px;
-		}
-		> .nav-item {
-			> .nav-link {
-				font-size: 11px;
-				padding-top: 2rem;
-				padding-bottom: 2rem;
-				padding-left: 20px;
-				padding-right: 20px;
-				font-weight: 500;
-				color: lighten($black,30%);
-				text-transform: uppercase;
-				letter-spacing: 2px;
-				position: relative;
-				&:before{
-					content: "";
-				  position: absolute;
-				  width: 100%;
-				  height: 100%;
-				  bottom: 0;
-				  left: 0;
-				  background-color: $primary;
-				  visibility: hidden;
-				  -webkit-transform: scaleX(0);
-				  transform: scaleX(0);
-				  -webkit-transition: all 0.2s ease-in-out 0s;
-				  transition: all 0.2s ease-in-out 0s;
-				  z-index: -1;
-				}
-				&:hover {
-					color: $white;
-					&:before{
-						visibility: visible;
-					  background-color: $primary;
-					  -webkit-transform: scaleX(1);
-					  transform: scaleX(1);
-					}
-				}
-				opacity: 1!important;
-				@include media-breakpoint-down(md){
-					padding-left: 0;
-					padding-right: 0;
-					padding-top: .9rem;
-					padding-bottom: .9rem;
-					&:hover{
-						color: $white;
-					}
-				}
-				@include media-breakpoint-down(sm){
-					border-bottom: 1px solid rgba(0,0,0,.05);
-				}
-			}
+    .navbar-nav {
+        > .nav-item {
+            > .nav-link {
+                font-size: 14px;
+                padding: 1.5rem 1rem;
+                font-weight: 500;
+                color: $text-primary;
+                position: relative;
+                
+                &:after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 0;
+                    height: 2px;
+                    background: $primary;
+                    transition: 0.3s;
+                }
+                
+                &:hover {
+                    color: $primary;
+                    &:after {
+                        width: 100%;
+                    }
+                }
+            }
 
 			.dropdown-menu{
 				border: none;
@@ -298,42 +341,61 @@ h1, h2, h3, h4, h5,
 }
 
 
-
-.hero-wrap{
-	width: 100%;
-	height: 100%;
-	position: inherit;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: top center;
-	position: relative;
-	@include media-breakpoint-down(lg){
-		background-position: center center !important;
-	}
-	.overlay{
-		position: absolute;
-		// width: 50%;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		content: '';
-		opacity: .4;
-		background: $black;
-	}
-	&.hero-wrap-2{
-		height: 400px;
-		.overlay{
-			opacity: .5;
-		}
-		.slider-text{
-			height: 400px;
-			h1{
-				font-weight: 400;
-				font-size: 40px;
-			}
-		}
-	}
+.hero-wrap {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    background-size: cover;
+    background-position: center;
+    
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to right, rgba($darken, 0.9), rgba($darken, 0.4));
+        z-index: 1;
+    }
+    
+    .slider-text {
+        height: 100vh;
+        min-height: 600px;
+        z-index: 2;
+        position: relative;
+        
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: $white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: rgba($white, 0.9);
+            margin-bottom: 2rem;
+        }
+        
+        .btn-primary {
+            padding: 1rem 2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: $primary;
+            border: none;
+            box-shadow: 0 4px 15px rgba($primary, 0.3);
+            transition: all 0.3s ease;
+            
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba($primary, 0.4);
+            }
+        }
+    }
 	.slider-text{
 		h1 {
 			color: $white;
